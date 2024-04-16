@@ -21,7 +21,7 @@ public class Bot : MonoBehaviour, IFightInput
     {
         _raycasters = GetComponentsInChildren<WeaponRay>();
         _player = FindObjectOfType<Player>();
-        Debug.Log(_player);
+        //Debug.Log(_player);
     }
 
     // Update is called once per frame
@@ -44,7 +44,6 @@ public class Bot : MonoBehaviour, IFightInput
                     //Debug.Log(_shotCooldownRemaining);
                 }
                 BrakeStartInputReceived?.Invoke();
-                Debug.Log("B");
             }
             else
             {

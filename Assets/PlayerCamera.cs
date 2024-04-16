@@ -5,8 +5,15 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     private Player _player;
+    [SerializeField]
+    private FightController _fightController;
     // Start is called before the first frame update
     void Start()
+    {
+        _fightController.OnStart += FindPlayer;
+    }
+
+    private void FindPlayer()
     {
         _player = FindObjectOfType<Player>();
     }

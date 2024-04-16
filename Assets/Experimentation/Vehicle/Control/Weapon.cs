@@ -38,6 +38,6 @@ public class Weapon : MonoBehaviour
         _isReady = false;
         yield return new WaitForSeconds(_cooldown);
         _isReady = true;
-        Debug.Log("Weapon Ready");
+        //Debug.Log("Weapon Ready");
     }
 }

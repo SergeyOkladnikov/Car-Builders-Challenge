@@ -34,7 +34,7 @@ public class WeaponRay : MonoBehaviour
     public void Shoot(int damage)
     {
         var _target = CastRay();
-        Debug.Log(_target);
+        //Debug.Log(_target);
         if (_target)
         {
             var _carPart = _target.GetComponent<CarPart>();

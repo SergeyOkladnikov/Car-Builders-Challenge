@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,9 @@ public class CarPart : MonoBehaviour
     [SerializeField]
     private int _maxHealth;
     private int _health;
-    // Start is called before the first frame update
 
+    public event Action OnDestruction;
+    // Start is called before the first frame update
     private void Start()
     {
         _health = _maxHealth;
@@ -28,6 +30,7 @@ public class CarPart : MonoBehaviour
         if (_health < 0 )
         {
             Destroy(this.gameObject);
+            OnDestruction?.Invoke();
         }
     }
 }
