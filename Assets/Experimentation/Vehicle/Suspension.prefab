@@ -131,12 +131,12 @@ WheelJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.5}
-  m_ConnectedAnchor: {x: -1.4218413, y: -1.9840022}
+  m_ConnectedAnchor: {x: 0, y: -0.5}
   m_Suspension:
     m_DampingRatio: 1
     m_Frequency: 10
     m_Angle: 90
-  m_UseMotor: 1
+  m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 2000
@@ -194,7 +194,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5640796203076306901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2f587868d1b4140ae415a3a0d06e7c, type: 3}
+  m_Script: {fileID: 11500000, guid: fb20e01ff1e844147a17862b189f095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 70
+  _maxHealth: 100
+  _isDestructable: 1
