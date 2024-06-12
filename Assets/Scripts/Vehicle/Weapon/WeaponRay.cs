@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponRay : MonoBehaviour
 {
     [SerializeField]
-    private int _range;
+    private float _range;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,28 +20,14 @@ public class WeaponRay : MonoBehaviour
         Debug.DrawRay(_ray.origin, _ray.direction * _range, Color.yellow);
     }
 
-    public GameObject CastRay()
+    public GameObject CastRay(float range)
     {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, _range);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, range);
         if (hit)
         {
-            return hit.transform.gameObject;
+            return hit.collider.gameObject;
         }
         return null;
-    }
-
-    public void Shoot(float damage)
-    {
-        var _target = CastRay();
-        Debug.Log(_target);
-        if (_target)
-        {
-            var _carPart = _target.GetComponent<CarPart>();
-            if (_carPart)
-            {
-                _carPart.TakeDamage(damage);
-            }
-        }
     }
 }

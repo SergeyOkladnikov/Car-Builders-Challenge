@@ -10,16 +10,16 @@ public class Bot : MonoBehaviour, IFightInput
     public event Action BrakeStartInputReceived;
     public event Action BrakeEndInputReceived;
     public event Action AttackInputReceived;
-    private WeaponRay[] _raycasters;
+    private Weapon[] _weapons;
     private Player _player;
     [SerializeField]
     private float _shotCooldown;
     private float _shotCooldownRemaining;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        _raycasters = GetComponentsInChildren<WeaponRay>();
+        _weapons = GetComponentsInChildren<Weapon>();
         _player = FindObjectOfType<Player>();
         //Debug.Log(_player);
     }
@@ -56,13 +56,13 @@ public class Bot : MonoBehaviour, IFightInput
 
     private bool IsAimedAtEnemy()
     {
-        foreach (WeaponRay raycaster in _raycasters)
+        foreach (Weapon weapon in _weapons)
         {
-            if (raycaster)
+            if (weapon)
             {
-                Ray2D _ray = new Ray2D(raycaster.transform.position, raycaster.transform.right);
-                Debug.DrawRay(_ray.origin, _ray.direction * 50, Color.yellow);
-                GameObject target = raycaster.CastRay();
+                //Ray2D _ray = new Ray2D(weapon.transform.position, weapon.transform.right);
+                //Debug.DrawRay(_ray.origin, _ray.direction * 50, Color.yellow);
+                GameObject target = weapon.CastRay();
                 if (target) {
                     if (target.GetComponent<CarPart>() && target.gameObject != gameObject)
                     {

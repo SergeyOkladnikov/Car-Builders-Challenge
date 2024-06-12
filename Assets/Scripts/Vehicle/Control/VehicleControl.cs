@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class VehicleControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float health;
+
     [SerializeField]
     private CarPart _driver;
     private VehicleMovement _vehicleMovement;

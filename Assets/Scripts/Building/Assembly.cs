@@ -8,10 +8,10 @@ using UnityEngine;
 public class Assembly : MonoBehaviour
 {
     //Test
-    private void Start()
+    /*private void Start()
     {
         PartInfo[,] parts = new PartInfo[,] {
-            { null,
+            { new PartInfo("Driver", "top", "debug", "driver"),
               null,
               new PartInfo("Weapon", "top", "debug", "weapon")
             },
@@ -30,18 +30,26 @@ public class Assembly : MonoBehaviour
               new PartInfo("Wheel", "joints", "debug", "wheel")
             }
         };
-        Build(parts, new Vector2(0, 3), "Test");
-    }
+        Build(parts, new Vector2(-5, 3), "Test");
+    }*/
 
     public void Build(PartInfo[,] parts, Vector2 spawnPoint, string name)
     {
+        List<WheelJoint2D> wheelJoints = new List<WheelJoint2D>();
         int rows = parts.GetUpperBound(0) + 1;
         int cols = parts.Length / rows;
         GameObject vehicle = new GameObject(name);
+        VehicleMovement movement = vehicle.AddComponent<VehicleMovement>();
+        vehicle.AddComponent<VehicleAttack>();
+        movement.wheelSpeed = 400;
+        vehicle.SetActive(false);
+        vehicle.SetActive(true);
         vehicle.transform.position = spawnPoint;
         GameObject hull = new GameObject("Hull");
+        vehicle.AddComponent<Player>();
         hull.transform.position = vehicle.transform.position;
         hull.transform.SetParent(vehicle.transform);
+        //float mass = 0f;
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < cols; col++)
@@ -60,6 +68,7 @@ public class Assembly : MonoBehaviour
                             newPart.transform.SetParent(hull.transform);
                             Debug.Log($"{col}, {row}");
                             newPart.transform.localPosition = new Vector2(col, - row);
+                            //mass += part.mass
                         }
                         else newPart.transform.parent = null;
 
@@ -69,6 +78,7 @@ public class Assembly : MonoBehaviour
                         if (CheckNeighbors(row, col, "all") != null)
                         {
                             WheelJoint2D wheelJoint = hull.AddComponent<WheelJoint2D>();
+                            wheelJoints.Add(wheelJoint);
                             wheelJoint.anchor = new Vector2(col, - row);
                             Tuple<int, int> closestWheel = (CheckNeighbors(row, col, "joints"));
                             if (closestWheel != null)
@@ -96,6 +106,7 @@ public class Assembly : MonoBehaviour
                                     {
                                         weapon.transform.SetParent(hull.transform);
                                         weapon.transform.localPosition = new Vector2(col, -row);
+                                        //mass += part.mass
                                     }
                                 }
                                 
@@ -121,7 +132,10 @@ public class Assembly : MonoBehaviour
        
             }
         }
-        hull.AddComponent<Rigidbody2D>();
+        movement.wheels = wheelJoints.ToArray();
+        Rigidbody2D rb = hull.GetComponent<Rigidbody2D>();
+        //rb.mass = mass
+        rb.mass = 5f;
 
 
 

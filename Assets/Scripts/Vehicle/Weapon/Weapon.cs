@@ -11,18 +11,12 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private bool _isReady = true;
     [SerializeField]
-    private int _range;
-    /*private WeaponRay _raycaster;
+    private float _range;
+    public WeaponRay raycaster;
     // Start is called before the first frame update
     private void Start()
     {
-        _raycaster = GetComponentInChildren<WeaponRay>();
-    }*/
-
-    void Update()
-    {
-        Ray2D _ray = new Ray2D(transform.position, transform.right);
-        Debug.DrawRay(_ray.origin, _ray.direction * _range, Color.yellow);
+        raycaster = GetComponentInChildren<WeaponRay>();
     }
 
     public bool IsReady()
@@ -52,14 +46,8 @@ public class Weapon : MonoBehaviour
     public GameObject CastRay()
     {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, _range);
-        if (hit)
-        {
-            return hit.transform.gameObject;
-        }
-        return null;
+        return raycaster?.CastRay(_range);
     }
-
 
     private IEnumerator CoolDown()
     {

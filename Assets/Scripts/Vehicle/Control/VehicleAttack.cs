@@ -35,7 +35,10 @@ public class VehicleAttack : MonoBehaviour
         Debug.Log("Attack");
         foreach (var gun in _longRangeWeapons)
         {
-            gun?.Shoot();
+            if (gun)
+            {
+                gun.Shoot();
+            }
         }
     }
 

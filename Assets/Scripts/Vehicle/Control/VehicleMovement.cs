@@ -9,10 +9,11 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField]
     private bool isBotControlled;
     [SerializeField]
-    private int _wheelSpeed;
+    public int wheelSpeed = 400;
     [SerializeField]
     private IFightInput _inputHandler;
-    private WheelJoint2D[] _wheels;
+    [SerializeField]
+    public WheelJoint2D[] wheels;
     void Start()
     {
     }
@@ -28,10 +29,15 @@ public class VehicleMovement : MonoBehaviour
             _inputHandler = GetComponent<Bot>();
         }
         
-        _wheels = GetComponentsInChildren<WheelJoint2D>();
+        wheels = GetComponentsInChildren<WheelJoint2D>();
         _inputHandler.MovementInputReceived += Move;
         _inputHandler.BrakeStartInputReceived += EnableBrake;
         _inputHandler.BrakeEndInputReceived += DisableBrake;
+        if (!isBotControlled)
+        {
+            Debug.Log(_inputHandler);
+            Debug.Log(wheels);
+        }
     }
 
     private void OnDisable()
@@ -44,15 +50,16 @@ public class VehicleMovement : MonoBehaviour
     private void Move(float input)
     {
         Debug.Log(input);
-        foreach (WheelJoint2D wheelJoint in _wheels)
+        foreach (WheelJoint2D wheelJoint in wheels)
         {
-            wheelJoint.connectedBody.AddTorque(- input * _wheelSpeed * Time.deltaTime);
+            wheelJoint.connectedBody.AddTorque(- input * wheelSpeed * Time.deltaTime);
+            Debug.Log("Moving");
         }
     }
 
     private void EnableBrake()
     {
-        foreach (WheelJoint2D wheelJoint in _wheels)
+        foreach (WheelJoint2D wheelJoint in wheels)
         {
             wheelJoint.useMotor = true;
         }
@@ -60,7 +67,7 @@ public class VehicleMovement : MonoBehaviour
 
     private void DisableBrake()
     {
-        foreach (WheelJoint2D wheelJoint in _wheels)
+        foreach (WheelJoint2D wheelJoint in wheels)
         {
             wheelJoint.useMotor = false;
         }

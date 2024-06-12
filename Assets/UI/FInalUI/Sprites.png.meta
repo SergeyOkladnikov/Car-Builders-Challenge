@@ -993,7 +993,7 @@ TextureImporter:
         height: 66
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 8, z: 9, w: 9}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1361,6 +1361,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 458
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be377f45d71100644ac5f3cde3c5d215
+      internalID: 1016914376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 400
+        width: 97
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4adf3c44340724a488f900a090ecf406
+      internalID: -1816130226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: resRecieveMarker
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 311
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab1ba5ea1bfc4741b5facdb9d0cee2b
+      internalID: 676432260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 245
+        width: 1078
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6776b06d19243343b0c975c8923f66b
+      internalID: -94836855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1381,9 +1465,21 @@ TextureImporter:
       BoostField: -837636378
       SaveBtn: 896498686
       Sprites_0: 354227738
+      Sprites_1: 2098584501
+      Sprites_10: 457138668
+      Sprites_11: -94836855
+      Sprites_12: 1719463175
+      Sprites_13: -2016975550
+      Sprites_2: 415378243
+      Sprites_3: -1592133521
+      Sprites_4: -47690544
+      Sprites_5: -797848789
       Sprites_59: 1275426533
+      Sprites_6: -2062079279
       Sprites_60: -1389032700
       Sprites_61: 1896620069
+      Sprites_7: 1016914376
+      Sprites_8: -1816130226
       Src: 1504375859
       SusPic: -587144086
       WheelPic: -1168101873
@@ -1427,6 +1523,7 @@ TextureImporter:
       playBtn: 1704502884
       playBtnS: 1516316046
       progressPanel: -1777042219
+      resRecieveMarker: 676432260
       restartBrn: -1447772750
       restartBtnS: 205053320
       star: -2026266585
